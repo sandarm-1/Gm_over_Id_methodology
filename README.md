@@ -151,3 +151,44 @@ Boundary between WI, MI and SI:
 
 Actually the value of the **gm/Id TELLS YOU what kind of inversion you have** and what region you are in.
 
+
+
+## Should we stop using the Square Law?
+
+The Square Law has its limitations.
+
+* **In STRONG inversion, it's INACCURATE for SHORT CHANNEL** due to short channel effects
+* **In WEAK inversion it FAILS COMPLETELY (BOTH FOR LONG AND SHORT CHANNEL devices)**
+
+
+Does this all mean that the SQUARE LAW has reached its end of life? Is it useless? Should we forget it?
+
+No.
+
+It's still an IMPORTANT asset because:
+* In Analog design we use relatively long L and relatively low Vov. Hence short channel effects are less pronounced.
+* It's still a simple yet POWERFUL model that provides a GREAT DEAL OF INTUITION as to in what direction are things going to move.
+* Just don't use SQUARE LAW for SIZING. But use it for INTUITION, to understand TRENDS, understand rough direction of things.
+
+
+## What happens in Sub-Threshold?
+
+**Sub-threshold is simply Weak Inversion**. VGS is smaller than VTH, that's all. There is still a bit of current building up and it builds up exponentially, going from nothing to something.
+
+The question is, what is the value of gm/Id in Sub-Threshold (synonym for Weak Inversion), is it BIG or SMALL, does it keep increasing as we keep reducing VGS to almost zero, or does it grow but saturates at some value?
+
+We just look at the curves.
+
+* Look at Id versus VGS curve. The slope of that is gm.
+* Look at log (decimal) of Id versus VGS. The slope of that is the TE (a "proxy" for gm/Id, as in it's proportional to it).
+* Look at the actual gm/Id characteristic (measured/simulated). See if it stacks up with what we predict from the log plot of the current.
+
+And what we see is:
+
+* Looking at Id curve versus VGS: at high VGS, big slope so big gm. At very low VGS, flattened slope so tiny gm.
+* Looking at log(Id) versus VGS: at high VGS, small slope so small efficiency TE, small gm/Id. As we decrease VGS going from SI to MI to WI, slope of log(Id) increases so efficiency TE and gm/Id increases, until at very low VGS (WI is the same as sub-threshold) the slope is large but it stops growing, so gm/Id will saturate, flatten out.
+* Looking at actual gm/Id plots, we see the gm/Id values stack up with the log(Id) slope.
+
+But the IMPORTANT point is not just that: the IMPORTANT point here is that at low VGS, look at the log(Id) plot, slope flattens out to a constant, meaning that log(Id) is linear w.r.t. VGS, and **that must necessarily imply that Id is EXPONENTIAL with respect to VGS in the very low VGS region (WI to sub-threshold).**
+
+And that exponential behaviour of Id versus VGS is similar to the BJT.
