@@ -6,7 +6,7 @@ From the simple small signal model of a MOSFET (just gm and ro) we calculate Av 
 
 Then we calculate the BW, to do that we just put in a load cap CL (we don't even consider device caps), so that gives a simple RC circuit, simple Low Pass filter with one pole given by 1/ro * CL, in this basic single pole system the bandwidth is equal to the pole.
 
-Then we multiply Av * BW to get the Gain-Bandwidth product (this is the same we do in amplifiers where we obtain the unity gain frequency omega_u = Ao * ¦p1¦).
+Then we multiply Av * BW to get the Gain-Bandwidth product (this is the same we do in amplifiers where we obtain the unity gain frequency omega_u = Ao * |p1|).
 
 At that point we see that ro cancels out so the only thing that defines GBW is gm.
 
@@ -71,3 +71,17 @@ This is the OLD-SCHOOL MOSFET MODEL, LONG CHANNEL MOSFET model:
 
 
 <img src="https://render.githubusercontent.com/render/math?math=$I_D =\frac{\mu_n C_{\mathrm{ox}} }{2}\frac{W}{L}{\left(V_{\mathrm{GS}} -V_{\mathrm{TH}} \right)}^2 =\frac{\mu_n C_{\mathrm{ox}} }{2}\frac{W}{L}V_{\mathrm{ov}}^2$">
+
+
+![image](https://user-images.githubusercontent.com/95447782/169861605-d82edce8-8922-468b-81a2-ac677d864df0.png)
+
+
+But the problem with this model is that it's not very good for SHORT CHANNEL MOSFETs.
+
+See that the SQUARE LAW fits quite well the actual characteristic for the LONG CHANNEL device (blue curve).
+
+But the SQUARE LAW does NOT fit well the actual characteristic of the SHORT CHANNEL device (red curve).
+
+![image](https://user-images.githubusercontent.com/95447782/169862807-c7a3cd2f-28c3-4d06-b89f-075cccb704c5.png)
+
+
