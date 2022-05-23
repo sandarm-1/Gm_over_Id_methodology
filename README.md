@@ -84,4 +84,24 @@ But the SQUARE LAW does NOT fit well the actual characteristic of the SHORT CHAN
 
 ![image](https://user-images.githubusercontent.com/95447782/169862807-c7a3cd2f-28c3-4d06-b89f-075cccb704c5.png)
 
+If we look at the gm, again we see the gm predicted by the SQUARE LAW fits (relatively) well the LONG CHANNEL device but it does NOT fit well the actual gm of a SHORT CHANNEL device.
+
+Notice how gm is supposed to grow linearly with VGS-VTH which is the Vov. In the LONG CHANNEL device that's a good approximation, more overdrive gives more gm, approximately linearly. **But not in the SHORT CHANNEL one, there as you increase the overdrive the gm flattens off, it stops growing linearly so you can't get more gm by just overdriving it more.**
+
+Notice that **the "PROBLEM" is at high Overdrive (STRONG INVERSION).** At the beginning (low Overdrive, WEAK INVERSION) the Square Law works more or less, **it's at STRONG INVERSION where it starts to fail for the SHORT CHANNEL one.**
+
+
+![image](https://user-images.githubusercontent.com/95447782/169866635-2a16c1d3-9a80-45ba-981a-ee66136a897b.png)
+
+The causes for this are:
+
+* Short channel effects (velocity saturation, mobility degradation, etc)
+* In strong inversion, short channel, Id is no longer quadratic with V overdrive, but it's more like linear (gm saturates at large Vov)
+
+Overall, we have that:
+* **SQUARE LAW FAILS TO DESCRIBE THE SHORT CHANNEL DEVICE IN STRONG INVERSION **
+
+
+
+
 
