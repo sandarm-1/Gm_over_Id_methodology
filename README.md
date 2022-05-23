@@ -102,6 +102,52 @@ Overall, we have that:
 * **SQUARE LAW FAILS TO DESCRIBE THE SHORT CHANNEL DEVICE IN STRONG INVERSION **
 
 
+So:
+
+* In the **SHORT CHANNEL MOSFET**, due to short channel effects, the **SQUARE LAW stops working at STRONG INVERSION**.
+* For the SHORT CHANNEL, in STRONG INVERSION, the CURRENT is NO LONGER SQUARE, IT BECOMES MORE LIKE LINEAR GROWTH WITH Vov.
+* Since gm is just the slope:
+* For the **SHORT CHANNEL MOSFET in STRONG INVERSION, the GM is NO LONGER GROWING LINEARLY, IT BECOMES FLAT, CONSTANT OR SATURATED AT LARGE Vov**.
+
+Now, what happens with gm/Id ratio for the SHORT CHANNEL device?
+
+And by what happens we mean, does the SQUARE LAW PREDICT a dependency of gm/Id versus VGS that really matches the actual characteristic of the device in real life?
+
+Starting from the SQUARE LAW expression of Id, we are "supposed" to get a gm/Id dependency of VGS that is INVERSE function of gm/Id versus VGS.
+
+![image](https://user-images.githubusercontent.com/95447782/169869264-9a1e5eec-d40a-46ff-a32f-90d7d3f8eb36.png)
 
 
+Now let's look at model versus reality:
+
+![image](https://user-images.githubusercontent.com/95447782/169870245-ac68170d-7a52-4878-b9cc-0a9159174a05.png)
+
+
+Notice how the gm/Id expression that results from the SQUARE LAW
+
+<img src="https://render.githubusercontent.com/render/math?math=$\frac{g_m }{I_D }=\frac{2}{V_{\textrm{ov}} }$">
+
+**predicts that at very low overdrive (weak inversion) we should get HUGE gm/Id values** (HUGE TRANSISTOR EFFICIENCY, nearly infinite) but that's **not the case in reality**.
+
+So, **the SQUARE LAW fails to describe weak-inversion COMPLETELY**, for both LONG and SHORT channel devices.
+
+Remember that for the BJT we got that TE (transistor efficiency, gm/Ic) was CONSTANT no matter what VBE?
+
+For the MOSFET, the TE (transistor efficiency, gm/Id) is NOT constant, it actually DEPENDS ON THE BIAS POINT:
+
+![image](https://user-images.githubusercontent.com/95447782/169871545-55a71119-a7aa-4511-927c-41253a4604b0.png)
+
+
+Boundary between WI, MI and SI:
+
+* There is no real boundary but just rough values:
+* If you have:
+* **gm/Id > 20 ==> You are in WI**
+* **gm/Id ~ 10 to 20 ==> You are in MI**
+* **gm/Id < 10 ==> You are in SI**
+
+![image](https://user-images.githubusercontent.com/95447782/169871770-6489081a-ca58-421d-948d-7f1ff13bcfa3.png)
+
+
+Actually the value of the **gm/Id TELLS YOU what kind of inversion you have** and what region you are in.
 
