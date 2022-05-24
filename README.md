@@ -420,4 +420,29 @@ All we have said so far sounds promising but our simulator doesn’t understand 
 
 Here is how:
 
- 
+### Reference plots extraction:
+
+* First of all, assume (imagine) we have a “reference device” with width W or “some (known) W”.
+* **We simulate this device, sweeping VGS over a range of voltages**. For that step, we give it also “some (known) L”.
+* From that simulation **we plot ID versus VGS** and we take note of the fact that, for a given L (we have set L to “some L”) there is one-to-one correspondence between VGS and ID. That means, **given “some W and L”, VGS determines ID completely.**
+* At this step we don't think about VDS explicitly but again we saw before that VDS is a WEAK variable and it has LITTLE impact on ID. So for this step we may just set VDS to something reasonable like some intermediate Vdsat_margin, maybe not tie the Drain all the way up to supply but something intermediate. Or maybe put a diode on top like VDD minus one VTH or something like that, in any case it's just a case of **setting VDS to some voltage**.
+* Once the previous sweep is done (ID vs VGS) we have our 1st reference curve, which is ID vs VGS curve for our “reference device”.
+* Next, **we also plot gm/Id versus VGS for this device**. And again we take note of the fact that we have one-to-one correspondence between gm/Id and VGS, that simply means that for any value of gm/Id (whether it’s in WI, MI or SI) there is only one VGS that produces it so we can calculate VGS from gm/Id and vice-versa.
+* By the way, plotting gm/Id at this step can be done from the simulation data from the previous sweep, where we swept VGS and at each point we recorded ID and we would also record gm for each point.
+* Next we notice the following fact: if gm/Id gives me VGS as a one-to-one correspondence, and VGS gives me ID as a one-to-one also, then that means that gm/Id gives me ID as a one-to-one correspondence also.
+* **At this point, why not plot everything versus gm/Id?** If anything can be plotted versus VGS then it can also be plotted against gm/Id, since there is a one-to-one relationship between VGS and gm/Id.
+* Also, **any other parameter that comes out of the VGS sweep can also be plotted against gm/Id**.
+* So **we combine the previous 2 plots into a new plot which plots ID versus gm/Id**. Now the X axis, independent variable or DOF or “knob” is gm/Id. Choose a gm/Id value and that tells me straight away exactly what ID corresponds to it, for this “reference device” with “some (known) W and L” (these are values we know and are associated with the plots we have just generated for the “reference device” which we will call “reference plots”).
+
+
+### Sizing devices with the help of reference plot data
+Ok we have finalized the process of generating “reference plots” for our “reference device” with “some (known) W and L”.
+
+Now we are going to see **how do we use this information to design any device, that is to solve a new design problem**. What does that mean? It means that now **we are going to take ANY gm/Id that we want AND ANY ID that we want, and we are going to find out exactly how much W and L produce it.**
+
+For this step it’s crucial to simply notice the fact that ID is ALWAYS proportional to W, as a general rule.
+
+
+
+
+
