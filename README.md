@@ -254,4 +254,53 @@ Why not?
 * The answer is that won't take you very far because in order to compensate the loss of gm you have already incurred in (gm has gone down exponentially) you would have to increase W also exponentially. And of course you can't usually increase W exponentially because your device will become huge and occupy a large area, but even if you said ok I have the area I can do it, you still don't fix the speed problem with this approach because by making W larger you increase the capacitance exponentially which makes it exponentially slow so that's really not going to solve the low speed in weak inversion issue. I mean you could make your device a bit larger W and get a bit more gm in weak inversion but you won't compensate the full loss, just a bit.
 
 
+So what's the solution?
+
+## Moderate inversion
+
+* **Just operate in Moderate Inversion (MI).**
+
+That's becoming really popular with lower supply voltages.
+
+**Moderate Inversion is a pretty good trade off because**:
+
+* You have decent gm/Id, I mean much better than Strong Inversion
+* You have decent gm/gds (when we talk about gm/gds basically it's like saying gds=1/ro, so gm/gds is gm * ro=Av, so we are talking about the intrinsic gain, gm/gds is a measure of the intrinsic gain).
+* Some degradation in speed (from Strong Inversion) is OK, as SHORT channel MOSFETs are already very fast.
+
+
+![image](https://user-images.githubusercontent.com/95447782/170001602-c9bbbf45-9296-465e-a299-9874a8f490a1.png)
+
+
+The problem with Moderate Inversion?
+
+* No simple model exists for Moderate Inversion.
+* We have a good model for Strong Inversion (the SQUARE LAW)
+* And a good model for Weak Inversion (the subthreshold EXPONENTIAL)
+* But not for Moderate Inversion.
+
+But we ask the question, DO WE REALLY NEED ACCURATE MODELS?
+
+Maybe not, because:
+
+* SIMPLE models like SQUARE LAW are necessary for intuition ("roughly" understand trends) BUT ARE NOT ACCURATE
+* ACURRATE models provide NO INTUITION and are INTRACTABLE when you want to do some analysis with them
+
+At this step, it's worth noting that ACCURATE MODELS ARE:
+
+* The simulator type models like BSIM etc, they are ACCURATE but can't use for analysis just simulation.
+* The EKV model, yes this model is ACCURATE and works in all regions of operation, so it is valid for Moderate Inversion BUT IN REAL LIFE AS A DESIGNER WHEN YOU HAVE TO DO SOME REAL ANALYSIS OR SOME REAL DEVICE SIZING THIS MODEL BECOMES INTRACTABLE AND IS NOT RELATED TO CIRCUIT SPECS, LIKE DO THIS TO GET MORE GM AND MORE SPEED ETC SO CIRCUIT DESIGNERS DON'T LIKE THIS MODEL VERY MUCH.
+
+So the proposed methodology is:
+
+* Maybe we don't need ACCURATE models for Moderate Inversion.
+* Just **use SIMPLE MODELS FOR INTUITION AND TRENDS** (LIKE THE SQUARE LAW)
+* and **then for CIRCUIT SIZING** (CALCULATE THE NUMBERS FOR YOUR CIRCUIT) **USE LUTs**.
+
+But before we talk about what are LUTs and how to use them, let's look at the MOSFET design problem.
+
+
+## Design variables in the MOSFET design problem
+
+The MOSFET design is a function of 5 variables (5 degrees of freedom).
 
