@@ -442,7 +442,60 @@ Now we are going to see **how do we use this information to design any device, t
 
 For this step it’s crucial to simply notice the fact that ID is ALWAYS proportional to W, as a general rule.
 
+![equation](https://latex.codecogs.com/svg.image?I_D%20%5C;%20%5Calpha%20%5C;%20W)
 
+And by ALWAYS we mean in all regions, this is true in WI, MI and SI. And of course for all processes, this as true in 130nm as it is in 22nm.
+
+Why? Because regardless of the region, if you stick 2 devices in parallel you get 2x the current, or if you take a device and you make it 2 fingers of the same width, you get a device with 2x W and 2x the current flows.
+
+From this insight, we SIMPLY apply **cross-multiplication**.
+
+We know:
+
+* For the “reference device” of “some (known) W and L” we have its ID versus gm/Id plot, or equivalently its ID versus VGS plot.
+* For a new device or “design problem”, we are given a target ID, let’s call it IDx, this is defined in the problem DOFs. More than saying “we are given a target ID” we should say we have given it to ourselves, because we MUST have actually reached to the conclusion (somehow) that for this certain device in our circuit in order to achieve a certain functionality and parametric performance it has to have a certain ID. ID is one of our DOFs (knobs) so we are the ones who choose ID.
+* Once we have the new IDx, we need to find out which width Wx will produce it. We simply calculate Wx proportionally (cross-multiplication) like Wx = W * IDx/ID.
+* The resulting device will have the same L as the reference device, the same VGS (corresponding to the 
+
+This summarizes cross-multiplication.
+
+An example of cross-multiplication:
+
+![image](https://user-images.githubusercontent.com/95447782/170090178-5f7934e4-4b97-47c8-85f2-742af7adad41.png)
+
+Another example:
+
+![image](https://user-images.githubusercontent.com/95447782/170090274-cd9a4646-bf84-401c-a9a5-f117eb8120ed.png)
+
+
+A recap of the 5 DOFs:
+
+* Old-school (SQUARE LAW): W, L, VGS, VDS, VSB.
+* New paradigm (gm/Id): gm/Id, L, ID, VDS, VSB.
+
+
+### Generating the LUTs
+
+Now more specifically, how do we generate these LUTs?
+
+First of all recognize the implications of ID being proportional to W. Due to this property, our life is easier!
+
+**Key point 1:**
+* If ID is proportional to W, anything proportional to ID is ALSO proportional to W.
+* gm, gds, cgb, csb, cdb are ALL proportional to W.
+* Also NOISE is proportional to the W: thermal noise and flicker noise.
+
+**Key point 2:**
+* The ratios of these parameters, they all must be INDEPENDENT of the W.
+* gm/Id, gm * ro, VA, etc these are all INDEPENDENT of the W.
+
+For this reason, **when we simulate our reference device, WE STORE THESE PARAMETERS for the reference device**. Not only we store the plots, we also store these parameters. Just so that afterwards we can calculate these parameters for our new design problem via cross-multiplication.
+
+**THIS IS WHY WE ONLY NEED TO CHARACTERIZE ONE REFERENCE WIDTH DEVICE.** We can characterize various Lengths, but just one width is enough for each Length.
+
+How do we build the design charts? (the LUTs)
+
+Just a simple testbench like this, do our sweeps, store all the data.
 
 
 
