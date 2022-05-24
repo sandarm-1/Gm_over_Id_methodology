@@ -304,3 +304,38 @@ But before we talk about what are LUTs and how to use them, let's look at the MO
 
 The MOSFET design is a function of 5 variables (5 degrees of freedom).
 
+Three voltages:
+* VGS
+* VDS
+* VSB
+
+And two sizing parameters:
+* W
+* L
+
+From least important to most important, these are:
+
+Least important, VSB.
+
+* VSB causes Body effect, if Body is biased higher than Source then it increases VTH.
+* But it's not an important degree of freedom.
+* If you have a dedicated well (Deep NWELL) then you can tie Body to Source so no problem there.
+* In some circuits you may not have Deep NWELL and you just can't tie Body to Source, like in a 5T-OTA where you have a floating Source BUT that is a necessity to provide the circuit's Common Mode, so you can't do anything about it, just live with it.
+* Overall, **VSB is not an important degree of freedom, you just tie Body to Source if you can and if not you just live with it.**
+
+Then, VDS.
+
+* Ideally from simple SQUARE LAW VDS should not affect ID but in reality it does due to Early Voltage (VA), that happens due to Channel Length Modulation and DIBL.
+* The VDS effect is modelled by ro, remember ro=VA/ID so more VA is better for larger ro.
+* A point that is not often discussed much is that VA is not constant or fixed, it actually varies depending on VDS. VA increases as we increase VDS. Hence to get good ro you can't have your device oeprating at the edge of saturation (VDsat) you must place it deep into saturation (use a higher VDsat_margin).
+* VA also increases as we increase L, longer devices have more VA hence more ro BUT to get the extra VA which is what you want in order to increase your ro you can't just increase L and keep operating your device at the edge of saturation, to get the higher VA from your Longer device you need to place it deeper into saturation again.
+* But again, even if we know how to make VA larger in order to get higher ro, in many cases we can't just increase our VDS as much as we want, because we run out of headroom specially at low supply voltages.
+* The reason why we say all this is that, at the end of the day, **VDS is not a variable that we have a lot of freedom to play with, it is not a very flexible degree of freedom for the designer, a lot of the time it's imposed by circuit circumstances like headroom crushing etc**.
+
+Now **VGS, THIS IS THE MOST IMPORTANT VOLTAGE OF THE 3**.
+
+* VGS is the primary voltage that really controls device behaviour.
+* VSB and VDS were WEAK variables but VGS is a STRONG VARIABLE in our circuit design.
+* However in reality, we almost never set a specific VGS value, what we do is that we set a specific ID value, then we mirror it up and down and the ID is what sets the VGS.
+* Therefore **in reality we should replace VGS by ID in the Degrees Of Freedom list**.
+
