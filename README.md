@@ -221,5 +221,18 @@ where
 <img src="https://render.githubusercontent.com/render/math?math=$I_c =I_{\textrm{ss}} e^{\frac{V_{\textrm{BE}} }{V_T }} =I_{\textrm{off}} e^{\frac{V_{\textrm{GS}} }{nV_T }}$">
           
 Notice that n is always > 1.
-For Bulk MOSFET,  <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 2\to 1\ldotp 5$">
-For SOI or FinFET, <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 1$"> (because in these techs you have a very small Cdep). 
+
+* For Bulk MOSFET,  <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 2\to 1\ldotp 5$">
+* For SOI or FinFET, <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 1$"> (because in these techs you have a very small Cdep). 
+
+
+![image](https://user-images.githubusercontent.com/95447782/169987120-c8924cf6-4071-41f3-bd4b-093543ce4bf8.png)
+
+
+How does that translate to specific values of gm/Id in WI region?
+
+* From the exponential equation of Id in subthreshold, we just differentiate that w.r.t. VGS and we get gm. Then we divide that by Id and we get gm/Id.
+* And again we get CONSTANT value of gm/Id for the MOSFET in Weak Inversion (subthreshold), like we did for the BJT, but this time the constant value is the BJT value divided by the n factor. The BJT value was constant at 1/Vt, where Vt is the thermal voltage kT/q=26mV hence the BJT constant gm/Id value was 38.5 S/A.
+* So for the MOSFET in WI the constant gm/Id value with 38.5 divided by n, so overall it's a number between 25 and 35 for bulk CMOS depending on whether n is closer to 1.5 or closer to 1.2.
+
+
