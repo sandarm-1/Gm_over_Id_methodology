@@ -192,3 +192,34 @@ And what we see is:
 But the IMPORTANT point is not just that: the IMPORTANT point here is that at low VGS, look at the log(Id) plot, slope flattens out to a constant, meaning that log(Id) is linear w.r.t. VGS, and **that must necessarily imply that Id is EXPONENTIAL with respect to VGS in the very low VGS region (WI to sub-threshold).**
 
 And that exponential behaviour of Id versus VGS is similar to the BJT.
+
+![image](https://user-images.githubusercontent.com/95447782/169980549-98abb7ba-f457-44ee-ac81-c921ccca1117.png)
+
+
+That's the empyrical observation, we just looked at real measured curves of gm/Id and plotted log(Id) versus VGS and saw that slope flattening at low VGS and hence we DEDUCTED that Id must be exponential w.r.t. VGS in that region.
+
+But let's derive the equation for that, as in, let's model it, see if we can model where that exponential behaviour is coming from.
+
+This is what happens:
+
+Subthreshold is synonym for WEAK INVERSION.
+
+* In Weak Inversion, the channel has not formed yet. There is no INVERSION LAYER YET, we haven't created the CHANNEL yet. All we have done is we have got rid of the HOLES of the p-sub, we have pushed them away, we have emptied the area under the Gate Oxide, but we haven't attracted electrons yet. Hence **IN WEAK INVERSION WE DON'T HAVE AN INVERSION LAYER YET, ALL WE HAVE IS A DEPLETION REGION WHICH IS SIMPLY AN AREA EMPTY OF CARRIERS** (HOLES HAVE BEEN PUSHED AWAY, ELECTRONS NOT ATTRACTED IN YET).
+* **That empty depletion region is a CAP. Depletion capacitor, Cdep**. Conductor layer on top (the Gate), conductor layer below (the substrate electrons waiting on the substrate outside the depletion region) and no charge carriers in the middle.
+* Here we still don't have a MOSFET, we have an NPN junction (D-Psub-S) which is a BJT. The Collector is the Drain, the Base is "the sheet of Psub material that lies just underneat the gate oxide, the would-be channel", and the Emitter is the Source. Notice that the Base is not the GATE of the transistor, the Base is "the sheet of Psub material that is right underneath the oxide, where the channel will eventually form but it hasn't formed yet".
+* The Base of such BJT is connected to the Gate of the NMOS via a capacitive divider (Cox + Cdep). Cox cap has one plate on the Gate and one plate on "the sheet of Psub material that lies just underneath the oxide". Cdep has one plate on "the sheet of Psub material that lies just underneath the oxide" and the other plate on the rest of the Psub which is connected to Ground, at the bottom.
+* Hence the Base voltage is a the Gate voltage divided by the (capacitive) voltage divider formed by Cox and Cdep. Since Ve=Vs,
+
+<img src="https://render.githubusercontent.com/render/math?math=$V_{\textrm{BE}}=V_{\textrm{GS}}\frac{C_{\textrm{ox}}}{C_{\textrm{ox}}+C_{\textrm{dep}}}=\frac{V_{\textrm{GS}}}{n}$">
+
+where 
+
+<img src="https://render.githubusercontent.com/render/math?math=$n=\frac{C_{\textrm{ox}} +C_{\textrm{dep}} }{C_{\textrm{ox}} }$">
+
+* With that VBE, the BJT current in this situation is 
+
+<img src="https://render.githubusercontent.com/render/math?math=$I_c =I_{\textrm{ss}} e^{\frac{V_{\textrm{BE}} }{V_T }} =I_{\textrm{off}} e^{\frac{V_{\textrm{GS}} }{nV_T }}$">
+          
+Notice that n is always > 1.
+For Bulk MOSFET, 
+For SOI or FinFET, (because in these techs you have a very small Cdep).
