@@ -405,7 +405,7 @@ Use SMALL gm/Id if we want:
 Use LARGE gm/Id if we want:
 * Moderate or Weak Inversion biasing
 * Large gm for a given ID (devices whose gm contributes to gain, such as input pair devices and cascodes)
-* High efficiency (LOW POWER) i.e. low ID for a given spec of noise and speed (that's to say a given spec on gm, since gm controls speed and noise)
+* **High efficiency (LOW POWER)** i.e. low ID for a given spec of noise and speed (that's to say a given spec on gm, since gm controls speed and noise)
 * Less random mismatch. This is because large gm/Id implies large W (larger area)
 * Low flicker noise. Again, because large gm/Id implies large W (larger area)
 * Large input range and/our output swing. Because large gm/Id implies low Vdsat as Vdsat ~ 2/(gm/Id).
