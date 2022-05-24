@@ -232,7 +232,26 @@ Notice that n is always > 1.
 How does that translate to specific values of gm/Id in WI region?
 
 * From the exponential equation of Id in subthreshold, we just differentiate that w.r.t. VGS and we get gm. Then we divide that by Id and we get gm/Id.
-* And again we get CONSTANT value of gm/Id for the MOSFET in Weak Inversion (subthreshold), like we did for the BJT, but this time the constant value is the BJT value divided by the n factor. The BJT value was constant at 1/Vt, where Vt is the thermal voltage kT/q=26mV hence the BJT constant gm/Id value was 38.5 S/A.
-* So for the MOSFET in WI the constant gm/Id value with 38.5 divided by n, so overall it's a number between 25 and 35 for bulk CMOS depending on whether n is closer to 1.5 or closer to 1.2.
+* And again we get a CONSTANT value of gm/Id for the MOSFET in Weak Inversion (subthreshold), like we did for the BJT, but this time the constant value is the BJT value divided by the n factor. The BJT value was constant at 1/Vt, where Vt is the thermal voltage kT/q=26mV hence the BJT constant gm/Id value was 38.5 S/A.
+* So **for the MOSFET in WI the constant gm/Id value with 38.5 divided by n, so overall it's a number between 25 and 35 for bulk CMOS depending on whether n is closer to 1.5 (bulk CMOS) or closer to 1.1 (SOI or FinFet)**.
+
+![image](https://user-images.githubusercontent.com/95447782/169995901-f97d365a-829d-4169-a62c-257a05ec89d8.png)
+
+Ok so it's quite clear that the region with highest gm/Id (highest TE or Transistor Efficiency) is Weak Inversion.
+
+Should we then be putting all our transistors in Weak Inversion because that's the most efficient region?
+
+The anwer is No.
+
+Why not?
+
+* One of the false conclusions that people get is that in Weak Inversion since you have highest gm/Id then you will get highest intrinsic gain (Av=gm * ro), since ro=VA/Id, then Av=gm * ro=(gm/Id) * VA so clearly we will get largest Av when gm/Id is largest and that's Weak Inversion. Correct?
+* Well no. Remember what matters for speed is not just high intrinsic gain (Av) but high Gain-Bandwidth-Product (GBW=Av * BW) and we saw  so what matters for speed is gm.
+* And **in Weak Inversion we may get higher Av but more importantly we get really tiny gm, remember how once you are in Weak Inversion gm decreases EXPONENTIALLY as we reduce VGS**, as in Subthreshold ID is exponential with VGS.
+* Since gm will decrease exponentially also speed will decrease exponentially.
+* So if you put all your transistors  in Weak Inversion (subthreshold) you will end up with very slow circuits. This can be ok for some applications, low power etc but not ok whenever speed matters.
+* Some people may say ok in Weak Inversion we get a very small ID which causes a really low gm (correct, since remember the expression of gm in subthreshold, Id is the exponential, differentiate that to get gm, you get <img src="https://render.githubusercontent.com/render/math?math=$g_m =\frac{I_{\mathrm{off}}e^{\frac{V_{\mathrm{GS}} }{{\mathrm{nV}}_T }} }{{\mathrm{nV}}_T }=\frac{I_d }{{\mathrm{nV}}_T }$ "> so yes gm is proportional to the absolute value of the (tiny) Id). So people may say ok so let's keep it in Weak Inversion, but with higher ID, but still in Weak Inversion, as in, a device that with the same small VGS as before (a VGS that's less that VTH) conducts a higher ID. How do you do this? Well just make W larger, so it's more sensitive (use the square law intuition, larger W is more ID for same VGS). So yes, why don't we do that? That would be good, because we get a device that is still in Weak Inversion hence we get the benefit of high gm/Id but since we have made the absolute value of ID larger we will also get gm larger and hence speed won't go down as much. Would this reasoning work?
+* The answer is that won't take you very far because in order to compensate the loss of gm you have already incurred in (gm has gone down exponentially) you would have to increase W also exponentially. And of course you can't usually increase W exponentially because your device will become huge and occupy a large area, but even if you said ok I have the area I can do it, you still don't fix the speed problem with this approach because by making W larger you increase the capacitance exponentially which makes it exponentially slow so that's really not going to solve the low speed in weak inversion issue. I mean you could make your device a bit larger W and get a bit more gm in weak inversion but you won't compensate the full loss, just a bit.
+
 
 
