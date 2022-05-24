@@ -339,3 +339,85 @@ Now **VGS, THIS IS THE MOST IMPORTANT VOLTAGE OF THE 3**.
 * However in reality, we almost never set a specific VGS value, what we do is that we set a specific ID value, then we mirror it up and down and the ID is what sets the VGS.
 * Therefore **in reality we should replace VGS by ID in the Degrees Of Freedom list**.
 
+Now the 2 sizing Degrees of Freedom.
+
+First, Length.
+* The following is a good summary of how you choose L in analog design most of the time.
+* Use SHORTER L if you want smaller area, smaller capacitance, HIGH SPEED (since transit time ft = gm/(2pi * Cgate) ).
+* Use LONGER L if you want high gain (as long L produces high VA), less random mismatch (longer L implies more area which reduces mismatch), lower flicker noise (longer L is more area).
+
+Finally, the Width.
+* This is one of the most difficult problems for the designer.
+* Choice of W is affected by the other things that you want to get out of your device (what gm/Id you want, i.e. what inversion level) also how much L you chose before, how much ID etc.
+* **Search range of W can go from sub-1um to 1000um.**
+* **Once you selected a specific W, then if you change something else like L or ID, that will change your gm/ID**.
+
+So **you end up "chasing the right W"** which is a tricky problem not straight-forward to pinpoint.
+
+How to fix this?
+
+In the good old days: **the OLD FIX was to replace W by Vov**, like choose a Vov that gets you the desired ID and TE (gm/Id) and from there compute W.
+
+* This worked ok in the good old days WITH THE SQUARE LAW.
+* Because:
+* From the square law, ID proportional to Vov^2. And gm (derivative) proportional to Vov. And gm/Id was also proportional to Vov.
+* So choose a Vov and that gives you desired gm (or at least an indication thereof) and gm/Id (Vov is a DOF).
+* You also try to choose an ID (ID chosen as a DOF).
+* Once you have Vov and ID, from those 2 DOFs, from the square law you computed back W.
+
+But this relationship (SQUARE LAW) is not valid any more (just as an intuition is ok but not for sizing, not for getting W values), because:
+* Square law not accurate in Strong Inversion for short channel (gm predicted by Square Law in strong inversion nowhere near reality FOR SHORT CHANNEL, LONG channel is ok but SHORT CHANNEL not at all)
+* In MI and WI, square law completely fails both for SHORT and LONG channels, it predicts huge or infinite TE (gm/Id) which is far from reality.
+* Vov not related to circuit specs any more, you can't get any idea about speed, gain or noise just by looking at how much is Vov.
+
+**The new fix: the new fix is just use gm/Id methodology!**
+
+gm/Id is the parameter we care about MOST. Because it's the TE (Transistor Efficiency).
+
+It captures the most basic function of the transistor (gm, transconductance, voltage controlled current) and the most valuable resource (power consumption).
+
+**So, replace W by gm/Id in the list of DOFs!**
+
+That means, forget about W and just find gm/Id. Don't deal with W any more. And don't deal with Vov any more either. Don't try to guess W any more, stop trying to guess the best W that will give your circuit the best specs, stop "chasing W"... instead design for a certain gm/Id and then once you got the correct gm/Id for your device, just go to the LUT and get the W from there.
+
+**gm/Id is the main design "knob"**.
+
+**Your SIZING PARAMETERS ARE gm/Id AND L. Not W and L any more!**
+
+Why? Because gm/Id controls, sets, defines the TE for a device **“ORTHOGONALLY”**.
+
+**What does “orthogonal” control of TE mean?** It means you set gm/Id and you get a TE, period, and that won't change even if you change Id afterwards, as long as you keep the same gm/Id. If ID changes, TE is kept unchanged. If L changes, TE is kept unchanged. How is it possible that with different ID you get the same TE? Because **we simply lookup the new W to guarantee the same gm/Id that we have decided to stick with**.
+
+An important point is also that **THE SEARCH RANGE FOR gm/Id IS LIMITED, TYPICALLY IN THE RANGE OF 5 TO 25.**
+* The range of gm/Id doesn't differ much from one device type to another
+* And from one technology to another
+
+So now we need to know the trade-offs of gm/Id, that means when should we use LARGE gm/Id and when to set SMALL gm/Id.
+
+Use SMALL gm/Id if we want:
+* Strong Inversion biasing
+* Small gm for a given ID (devices whose gm does not contribute to gain, or whose gm we prefer to keep low in order to keep other things low like noise or offset, such as for example active loads in a 5T opamp)
+* Small area
+* Small capacitance
+* **HIGH SPEED**
+* Large VA (large ro) since at lower gm/Id, strong inversion, the gate has more control over the channel, meaning that the effect of VDS on the channel is less, which means large ro.
+
+Use LARGE gm/Id if we want:
+* Moderate or Weak Inversion biasing
+* Large gm for a given ID (devices whose gm contributes to gain, such as input pair devices and cascodes)
+* High efficiency (LOW POWER) i.e. low ID for a given spec of noise and speed (that's to say a given spec on gm, since gm controls speed and noise)
+* Less random mismatch. This is because large gm/Id implies large W (larger area)
+* Low flicker noise. Again, because large gm/Id implies large W (larger area)
+* Large input range and/our output swing. Because large gm/Id implies low Vdsat as Vdsat ~ 2/(gm/Id).
+
+The BEST COMPROMISE is usually in MODERATE INVERSION (gm/Id between 10 and 20).
+
+## How to get device dimensions from gm/Id
+
+All we have said so far sounds promising but our simulator doesn’t understand gm/Id, it understands W/L. We can’t tell our simulator please give me a device with gm/Id of X, we need to tell it this is a device with such W and such L.
+
+**How do we get W from gm/Id?**
+
+Here is how:
+
+ 
