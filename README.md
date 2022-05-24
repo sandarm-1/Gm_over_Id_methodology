@@ -210,7 +210,7 @@ Subthreshold is synonym for WEAK INVERSION.
 * The Base of such BJT is connected to the Gate of the NMOS via a capacitive divider (Cox + Cdep). Cox cap has one plate on the Gate and one plate on "the sheet of Psub material that lies just underneath the oxide". Cdep has one plate on "the sheet of Psub material that lies just underneath the oxide" and the other plate on the rest of the Psub which is connected to Ground, at the bottom.
 * Hence the Base voltage is a the Gate voltage divided by the (capacitive) voltage divider formed by Cox and Cdep. Since Ve=Vs,
 
-<img src="https://render.githubusercontent.com/render/math?math=$V_{\textrm{BE}}=V_{\textrm{GS}}\frac{C_{\textrm{ox}}}{C_{\textrm{ox}}+C_{\textrm{dep}}}=\frac{V_{\textrm{GS}}}{n}$">
+<img src="https://render.githubusercontent.com/render/math?math=$V_{\mathrm{BE}}=V_{\mathrm{GS}}\frac{C_{\mathrm{ox}}}{C_{\mathrm{ox}}+C_{\mathrm{dep}}}=\frac{V_{\mathrm{GS}}}{n}$">
 
 where 
 
@@ -221,5 +221,5 @@ where
 <img src="https://render.githubusercontent.com/render/math?math=$I_c =I_{\textrm{ss}} e^{\frac{V_{\textrm{BE}} }{V_T }} =I_{\textrm{off}} e^{\frac{V_{\textrm{GS}} }{nV_T }}$">
           
 Notice that n is always > 1.
-For Bulk MOSFET, 
-For SOI or FinFET, (because in these techs you have a very small Cdep).
+For Bulk MOSFET,  <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 2\to 1\ldotp 5$">
+For SOI or FinFET, <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 1$"> (because in these techs you have a very small Cdep). 
