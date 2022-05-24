@@ -497,5 +497,7 @@ How do we build the design charts? (the LUTs)
 
 Just a simple testbench like this, do our sweeps, store all the data.
 
+![image](https://user-images.githubusercontent.com/95447782/170103763-c83c1dfe-54fe-4853-9a4a-47783c237bf0.png)
+
 
 
