@@ -210,20 +210,20 @@ Subthreshold is synonym for WEAK INVERSION.
 * The Base of such BJT is connected to the Gate of the NMOS via a capacitive divider (Cox + Cdep). Cox cap has one plate on the Gate and one plate on "the sheet of Psub material that lies just underneath the oxide". Cdep has one plate on "the sheet of Psub material that lies just underneath the oxide" and the other plate on the rest of the Psub which is connected to Ground, at the bottom.
 * Hence the Base voltage is a the Gate voltage divided by the (capacitive) voltage divider formed by Cox and Cdep. Since Ve=Vs,
 
-<img src="https://render.githubusercontent.com/render/math?math=$V_{\mathrm{BE}}=V_{\mathrm{GS}}\frac{C_{\mathrm{ox}}}{C_{\mathrm{ox}}+C_{\mathrm{dep}}}=\frac{V_{\mathrm{GS}}}{n}$">
+![equation](https://latex.codecogs.com/svg.image?V_%7B%5Cmathrm%7BBE%7D%7D=V_%7B%5Cmathrm%7BGS%7D%7D%5Cfrac%7BC_%7B%5Cmathrm%7Box%7D%7D%7D%7BC_%7B%5Cmathrm%7Box%7D%7D&plus;C_%7B%5Cmathrm%7Bdep%7D%7D%7D=%5Cfrac%7BV_%7B%5Cmathrm%7BGS%7D%7D%7D%7Bn%7D)
 
 where 
 
-<img src="https://render.githubusercontent.com/render/math?math=$n=\frac{C_{\textrm{ox}} +C_{\textrm{dep}} }{C_{\textrm{ox}} }$">
+![equation](https://latex.codecogs.com/svg.image?n=%5Cfrac%7BC_%7B%5Ctextrm%7Box%7D%7D%20&plus;C_%7B%5Ctextrm%7Bdep%7D%7D%20%7D%7BC_%7B%5Ctextrm%7Box%7D%7D%20%7D)
 
 * With that VBE, the BJT current in this situation is 
 
-<img src="https://render.githubusercontent.com/render/math?math=$I_c =I_{\textrm{ss}} e^{\frac{V_{\textrm{BE}} }{V_T }} =I_{\textrm{off}} e^{\frac{V_{\textrm{GS}} }{nV_T }}$">
+![equation](https://latex.codecogs.com/svg.image?I_c%20=I_%7B%5Ctextrm%7Bss%7D%7D%20e%5E%7B%5Cfrac%7BV_%7B%5Ctextrm%7BBE%7D%7D%20%7D%7BV_T%20%7D%7D%20=I_%7B%5Ctextrm%7Boff%7D%7D%20e%5E%7B%5Cfrac%7BV_%7B%5Ctextrm%7BGS%7D%7D%20%7D%7BnV_T%20%7D%7D)
           
 Notice that n is always > 1.
 
-* For Bulk MOSFET,  <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 2\to 1\ldotp 5$">
-* For SOI or FinFET, <img src="https://render.githubusercontent.com/render/math?math=$n\approx 1\ldotp 1$"> (because in these techs you have a very small Cdep). 
+* For Bulk MOSFET,  ![equation](https://latex.codecogs.com/svg.image?n%5Capprox%201%5Cldotp%202%5Cto%201%5Cldotp%205)
+* For SOI or FinFET, ![equation](https://latex.codecogs.com/svg.image?n%5Capprox%201%5Cldotp%201) (because in these techs you have a very small Cdep). 
 
 
 ![image](https://user-images.githubusercontent.com/95447782/169987120-c8924cf6-4071-41f3-bd4b-093543ce4bf8.png)
@@ -250,7 +250,7 @@ Why not?
 * And **in Weak Inversion we may get higher Av but more importantly we get really tiny gm, remember how once you are in Weak Inversion gm decreases EXPONENTIALLY as we reduce VGS**, as in Subthreshold ID is exponential with VGS.
 * Since gm will decrease exponentially also speed will decrease exponentially.
 * So if you put all your transistors  in Weak Inversion (subthreshold) you will end up with very slow circuits. This can be ok for some applications, low power etc but not ok whenever speed matters.
-* Some people may say ok in Weak Inversion we get a very small ID which causes a really low gm (correct, since remember the expression of gm in subthreshold, Id is the exponential, differentiate that to get gm, you get <img src="https://render.githubusercontent.com/render/math?math=$g_m =\frac{I_{\mathrm{off}}e^{\frac{V_{\mathrm{GS}} }{{\mathrm{nV}}_T }} }{{\mathrm{nV}}_T }=\frac{I_d }{{\mathrm{nV}}_T }$ "> so yes gm is proportional to the absolute value of the (tiny) Id). So people may say ok so let's keep it in Weak Inversion, but with higher ID, but still in Weak Inversion, as in, a device that with the same small VGS as before (a VGS that's less that VTH) conducts a higher ID. How do you do this? Well just make W larger, so it's more sensitive (use the square law intuition, larger W is more ID for same VGS). So yes, why don't we do that? That would be good, because we get a device that is still in Weak Inversion hence we get the benefit of high gm/Id but since we have made the absolute value of ID larger we will also get gm larger and hence speed won't go down as much. Would this reasoning work?
+* Some people may say ok in Weak Inversion we get a very small ID which causes a really low gm (correct, since remember the expression of gm in subthreshold, Id is the exponential, differentiate that to get gm, you get ![equation](https://latex.codecogs.com/svg.image?g_m%20=%5Cfrac%7BI_%7B%5Cmathrm%7Boff%7D%7D%20%20e%5E%7B%5Cfrac%7BV_%7B%5Cmathrm%7BGS%7D%7D%20%7D%7B%7B%5Cmathrm%7BnV%7D%7D_T%20%7D%7D%20%7D%7B%7B%5Cmathrm%7BnV%7D%7D_T%20%7D=%5Cfrac%7BI_d%20%7D%7B%7B%5Cmathrm%7BnV%7D%7D_T%20%7D) so yes gm is proportional to the absolute value of the (tiny) Id). So people may say ok so let's keep it in Weak Inversion, but with higher ID, but still in Weak Inversion, as in, a device that with the same small VGS as before (a VGS that's less that VTH) conducts a higher ID. How do you do this? Well just make W larger, so it's more sensitive (use the square law intuition, larger W is more ID for same VGS). So yes, why don't we do that? That would be good, because we get a device that is still in Weak Inversion hence we get the benefit of high gm/Id but since we have made the absolute value of ID larger we will also get gm larger and hence speed won't go down as much. Would this reasoning work?
 * The answer is that won't take you very far because in order to compensate the loss of gm you have already incurred in (gm has gone down exponentially) you would have to increase W also exponentially. And of course you can't usually increase W exponentially because your device will become huge and occupy a large area, but even if you said ok I have the area I can do it, you still don't fix the speed problem with this approach because by making W larger you increase the capacitance exponentially which makes it exponentially slow so that's really not going to solve the low speed in weak inversion issue. I mean you could make your device a bit larger W and get a bit more gm in weak inversion but you won't compensate the full loss, just a bit.
 
 
