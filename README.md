@@ -521,5 +521,14 @@ Either using [ADT](https://www.mos-ak.org/spring_2022/presentations/Omran_Spring
 * [pyMOSChar for LUT generation compatible with ngspice](https://github.com/ashwith/pyMOSChar)
 * [gmIdNeoKit GUI for visualizing charts from LUTs and design data](https://github.com/fengqzHD/gmIdNeoKit)
 
+Do systematic circuit sizing using Matlab code from:
+
+* Systematic Design of Analog CMOS Circuits : Using Pre-Computed Lookup Tables, Paul G A Jespers; Boris Murmann, Cambridge : Cambridge University Press, 2017.
+
+![image](https://user-images.githubusercontent.com/95447782/170247188-0b15dbd0-9768-411f-916e-34534b5d3a98.png)
+
+
+Matlab code by Prof. B. Murmann: https://web.stanford.edu/~murmann/gmid
+
 
 
