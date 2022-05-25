@@ -500,4 +500,26 @@ Just a simple testbench like this, do our sweeps, store all the data.
 ![image](https://user-images.githubusercontent.com/95447782/170103763-c83c1dfe-54fe-4853-9a4a-47783c237bf0.png)
 
 
+If you want ACCURATE results, you need to take into account the VDS and VSB dependence.
+
+So you sweep them also!
+
+And hence you have a 4D array.
+
+But that’s ok! Don’t worry! You just have to do it once.
+
+![image](https://user-images.githubusercontent.com/95447782/170245768-abd302d3-b8e4-4d13-8a21-860bfa6b58de.png)
+
+
+### Next steps
+
+Next step is run LUT generation in Skywater 130nm PDK.
+
+Either using [ADT](https://www.mos-ak.org/spring_2022/presentations/Omran_Spring_MOS-AK_2022.pdf) or using [pyMOSChar](https://github.com/ashwith/pyMOSChar).
+
+* [ADT for LUT generation and systematic design](https://www.mos-ak.org/spring_2022/presentations/Omran_Spring_MOS-AK_2022.pdf)
+* [pyMOSChar for LUT generation compatible with ngspice](https://github.com/ashwith/pyMOSChar)
+* [gmIdNeoKit GUI for visualizing charts from LUTs and design data](https://github.com/fengqzHD/gmIdNeoKit)
+
+
 
