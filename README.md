@@ -541,7 +541,7 @@ Do systematic circuit sizing using Matlab code from:
 ![image](https://user-images.githubusercontent.com/95447782/170247188-0b15dbd0-9768-411f-916e-34534b5d3a98.png)
 
 
-Matlab code by Prof. B. Murmann: https://web.stanford.edu/~murmann/gmid
+* Link to Matlab code by Prof. B. Murmann: https://web.stanford.edu/~murmann/gmid (plan to use this, or [pyMOSChar](https://github.com/ashwith/pyMOSChar) repo above)
 
 
 
