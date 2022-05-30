@@ -1,6 +1,26 @@
 # Gm over Id methodology
 An overview of Gm over Id methodology.
 
+## Motivation for a gm/Id methodology
+
+First, let's define the concept of Transistor Efficiency, TE, as the ratio between gm and the bias current that we need to burn in order to get that gm.
+
+![image](https://user-images.githubusercontent.com/95447782/169858303-a97b762e-cda7-4eb5-bb05-5dca062a0964.png)
+
+The transistor efficiency, defined as the ratio between gm and Id of a transistor at a specific bias point,
+
+* ![equation](https://latex.codecogs.com/svg.image?TE=%20%5Cfrac%7Bg_m%7D%7BI_D%7D)
+
+not only is a good representation of the trade-off between transconductance and quiescent current, but also serves as a valuable indicator for further design decisions.
+
+The motivation for a gm/Id methodology stems from the fact that:
+* in deep submicron nodes the **square law description of Id fails to describe device behaviour accurately**
+* especially **for short channel devices in strong inversion**
+* and also **for both long and short channel devices operating in weak inversion**
+
+In addition to this, gm is one of the most important parameters that determine device performance in terms of speed and noise.
+
+
 ## Why gm controls the speed
 From the simple small signal model of a MOSFET (just gm and ro) we calculate Av as vout/vin and we get Av = gm * ro.
 
@@ -24,12 +44,6 @@ So, more gm less noise.
 
 ![image](https://user-images.githubusercontent.com/95447782/169858135-e84d9715-69b5-4bc3-a7c7-8cbc2140d25d.png)
 
-## Motivation for a gm/Id methodology
-
-First, let's define the concept of Transistor Efficiency, TE, as the ratio between gm and the bias current that we need to burn in order to get that gm.
-
-![image](https://user-images.githubusercontent.com/95447782/169858303-a97b762e-cda7-4eb5-bb05-5dca062a0964.png)
-
 
 ### Why a gm/Ic methodology didn't make sense for BJTs
 
@@ -38,7 +52,6 @@ In the BJT the TE (transistor efficiency = gm/Iq) is CONSTANT, regardless of wha
 ![image](https://user-images.githubusercontent.com/95447782/169858435-94b3e368-41c0-40cf-900a-f0cca1eac66b.png)
 
 For the BJT there is no gm/Id methodology because the TE is CONSTANT. So in the BJT days no one talked about gm/Id methodology.
-
 For the BJT, since the Ic is an exponential of VBE, the LOG (LN) of the Ic is proportional to VBE.
 
 Now, if you differentate the LOG of the Ic with respect to VBE, you get 1/Vt which is the same as gm/Ic we got before.
