@@ -524,6 +524,14 @@ But that’s ok! Don’t worry! You just have to do it once.
 ![image](https://user-images.githubusercontent.com/95447782/170245768-abd302d3-b8e4-4d13-8a21-860bfa6b58de.png)
 
 
+### References
+[[1](https://www.youtube.com/watch?v=dzz4z3ijVts&t=932s)] The gm/ID Design Methodology Demystified, Dr. Hesham Omran, Master-Micro
+
+[[2](https://web.stanford.edu/~murmann/gmid)] Gm/ID Starter Kit, Dr. Boris Murmann, Stanford University.
+
+[[3](https://www.cambridge.org/jespers)] P.G.A. Jespers and B. Murmann, Systematic Design of Analog CMOS Circuits: Using Pre-Computed Lookup Tables, Cambridge University Press, 2017.
+
+
 ### Next steps
 
 Next step is run LUT generation in Skywater 130nm PDK.
